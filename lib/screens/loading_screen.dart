@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:weather_app/services/networking.dart';
 import '../utilities/personal_api_key.dart';
 import '../services/location.dart';
 
@@ -16,27 +14,20 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    getLocation();
+    getLocationData();
   }
 
-  void getLocation() async {
+  void getLocationData() async {
     Location location = Location();
     await location.getCurrentLocation();
 
-    print(location.latitude);
-    print(location.longitude);
-  }
+    var latitude = location.latitude;
+    var longitude = location.longitude;
 
-  void getData() async {
-    var response = await http.get(Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?lat=37.5078833&lon=15.0830017&appid=6fe5c98ccde73d7a7b4c3fa6a79f6a2a'));
+    NetworkHelper networkHelper = NetworkHelper(
+        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$API_KEY");
 
-    if (response.statusCode == '200') {
-      //Richiesta Accettata
-      String data = json.decode(response.body);
-    } else {
-      print("Error occured ${response.statusCode}");
-    }
+    var weatherData = await networkHelper.getData();
   }
 
   @override
@@ -48,7 +39,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               backgroundColor:
                   WidgetStateProperty.all<Color>(Colors.blue.shade50)),
           onPressed: () {
-            getLocation();
+            getLocationData();
           },
           child: Text(
             'Get Location',

@@ -1,3 +1,3 @@
-# weather_app
+# weather_app 🌤️🌧️☂️
 
-A new Flutter project.
+Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della posizionee è possibile ottenere le condizioni meteorologiche attuali.

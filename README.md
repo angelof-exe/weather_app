@@ -1,10 +1,12 @@
 # Weather App 🌤️🌧️☂️
 
+<img src="https://raw.githubusercontent.com/angelof-exe/weather_app/refs/heads/main/demo/image.png" width="200"> </img>
+
+
 Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della posizione è possibile ottenere le condizioni meteorologiche attuali.
 
 ## Indice
 
-- [Struttura del progetto](#struttura-del-progetto)
 - [Installazione](#installazione)
 - [Funzionalità](#funzionalità)
 - [Struttura del Progetto](#struttura-del-progetto)
@@ -12,35 +14,6 @@ Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della
 - [Risoluzione di Problemi](#risoluzione-di-problemi)
 - [Contributi](#contributi)
 - [Licenza](#licenza)
-
-### Struttura del Progetto
-
-```
-.
-├── analysis_options.yaml
-├── fonts
-│   └── SpartanMB-Black.otf
-├── images
-│   ├── city_background.jpg
-│   └── location_background.jpg
-├── lib
-│   ├── main.dart
-│   ├── screens
-│   │   ├── city_screen.dart
-│   │   ├── loading_screen.dart
-│   │   └── location_screen.dart
-│   ├── services
-│   │   ├── location.dart
-│   │   ├── networking.dart
-│   │   └── weather.dart
-│   └── utilities
-│       └── constants.dart
-├── pubspec.lock
-├── pubspec.yaml
-├── README.md
-└── weather_app.iml
-```
-
 
 
 ## Installazione

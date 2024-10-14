@@ -43,3 +43,5 @@ app.*.map.json
 /android/app/release
 
 tree.txt
+lib/utilities/personal_api_key.dart
+lib/scratch.dart

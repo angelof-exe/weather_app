@@ -28,7 +28,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var longitude = location.longitude;
 
     NetworkHelper networkHelper = NetworkHelper(
-        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$API_KEY");
+        "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$API_KEY&units=metric");
 
     var weatherData = await networkHelper.getData();
 
@@ -41,7 +41,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: SpinKitRing(
           color: Colors.white,

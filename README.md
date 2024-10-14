@@ -1,6 +1,6 @@
 # Weather App 🌤️🌧️☂️
 
-Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della posizionee è possibile ottenere le condizioni meteorologiche attuali.
+Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della posizione è possibile ottenere le condizioni meteorologiche attuali.
 
 ## Indice
 
@@ -9,6 +9,7 @@ Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della
 - [Funzionalità](#funzionalità)
 - [Struttura del Progetto](#struttura-del-progetto)
 - [Utilizzo](#utilizzo)
+- [Risoluzione di Problemi](#risoluzione-di-problemi)
 - [Contributi](#contributi)
 - [Licenza](#licenza)
 
@@ -39,6 +40,7 @@ Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della
 ├── README.md
 └── weather_app.iml
 ```
+
 
 
 ## Installazione
@@ -73,6 +75,44 @@ Per installare ed eseguire l'app localmente, segui questi passaggi:
 1. Quando l'app viene eseguita, verrà richiesto all'utente di fornire i permessi per accedere alla posizione.
 2. I dati vengono recuperati tramite chiamate di rete usando il modulo `networking.dart`.
 
+## Risoluzione di Problemi
+
+### Errore: `setState() or markNeedsBuild() called during build`
+
+#### Descrizione del Problema
+
+Questo errore si verifica quando viene chiamato `setState()` mentre il framework Flutter sta ancora costruendo i widget. In particolare, si può presentare quando si tenta di navigare da una schermata all'altra e di aggiornare lo stato del widget prima che il processo di costruzione sia completato.
+
+#### Soluzione Implementata
+
+Il problema è stato risolto utilizzando `Future.delayed(Duration.zero, ...)` per ritardare l'esecuzione della chiamata di navigazione. Questo garantisce che il metodo `Navigator.push` venga chiamato solo dopo che il frame corrente è stato completato, evitando l'errore.
+
+Il codice aggiornato per risolvere il problema è il seguente:
+
+```dart
+void getLocationData() async {
+  WeatherModel weatherModel = WeatherModel();
+  var weatherData = await weatherModel.getLocationWeather();
+
+  Future.delayed(Duration.zero, () {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return LocationScreen(locationWeather: weatherData);
+    }));
+  });
+}
+```
+
+## Funzionalità
+
+- **Recupero della Posizione**: Utilizzando il file `location.dart`, l'app permette di ottenere la posizione attuale dell'utente.
+- **Chiamate di Rete**: Grazie al file `networking.dart`, l'app esegue chiamate API per recuperare i dati esterni.
+- **Interfaccia Utente Responsive**: Gestita tramite il file `main.dart`.
+
+## Utilizzo
+
+1. Quando l'app viene eseguita, verrà richiesto all'utente di fornire i permessi per accedere alla posizione.
+2. I dati vengono recuperati tramite chiamate di rete usando il modulo `networking.dart`.
+
 ## Contributi
 
 Contributi, issue e suggerimenti sono benvenuti! Sentiti libero di aprire una issue o fare una pull request.
@@ -91,10 +131,6 @@ Contributi, issue e suggerimenti sono benvenuti! Sentiti libero di aprire una is
     git push origin feature/nuova-funzionalità
     ```
 5. Apri una pull request.
-
-## Licenza
-
-Questo progetto è distribuito sotto la licenza MIT. Vedi il file `LICENSE` per maggiori dettagli.
 
 
 

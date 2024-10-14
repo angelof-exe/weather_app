@@ -1,6 +1,8 @@
 # Weather App 🌤️🌧️☂️
 
-<img src="https://raw.githubusercontent.com/angelof-exe/weather_app/refs/heads/main/demo/image.png" width="200"> </img>
+<img src="https://raw.githubusercontent.com/angelof-exe/weather_app/refs/heads/main/demo/image.png" width="200"></img>
+<img src="https://raw.githubusercontent.com/angelof-exe/weather_app/refs/heads/main/demo/image2.png" width="200"> </img>
+<img src="https://raw.githubusercontent.com/angelof-exe/weather_app/refs/heads/main/demo/image3.png" width="200"> </img>
 
 
 Applicazione sviluppata con il framework Flutter in cui tramite l'utilizzo della posizione è possibile ottenere le condizioni meteorologiche attuali.
